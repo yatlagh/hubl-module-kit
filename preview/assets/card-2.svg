@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Decorative pattern">
+  <rect width="640" height="360" fill="#2E7A62"/>
+  <g fill="#FBFAF7" opacity="0.9">
+    <circle cx="300" cy="180" r="96"/>
+    <rect x="400" y="84" width="200" height="192" rx="24" opacity="0.55"/>
+  </g>
+</svg>

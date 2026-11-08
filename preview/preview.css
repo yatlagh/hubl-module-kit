@@ -1,0 +1,41 @@
+/*
+  Preview-only layout styles.
+
+  HubSpot ships its own layout.css for drag-and-drop areas (.container-fluid,
+  .row-fluid, .spanN). This file stands in for it locally so the rendered
+  template has a 12-column grid. It is not part of the theme.
+*/
+
+.container-fluid { width: 100%; }
+
+.row-fluid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--nw-gutter, 2rem);
+}
+
+.row-fluid > * { grid-column: 1 / -1; }
+
+.dnd-section { padding: 80px 0; }
+
+/*
+  A module dropped straight into a section spans the full width and uses its
+  own .nw-container. Only rows that hold explicit columns are constrained.
+*/
+.dnd-section > .row-fluid:has(> .dnd-column) {
+  width: min(100% - 2 * var(--nw-gutter, 2rem), var(--dnd-max-width, var(--nw-max-width, 1160px)));
+  margin-inline: auto;
+}
+.dnd-column .nw-container { width: 100%; }
+
+@media (min-width: 768px) {
+  .span1 { grid-column: span 1; }  .span2 { grid-column: span 2; }
+  .span3 { grid-column: span 3; }  .span4 { grid-column: span 4; }
+  .span5 { grid-column: span 5; }  .span6 { grid-column: span 6; }
+  .span7 { grid-column: span 7; }  .span8 { grid-column: span 8; }
+  .span9 { grid-column: span 9; }  .span10 { grid-column: span 10; }
+  .span11 { grid-column: span 11; } .span12 { grid-column: span 12; }
+}
+
+/* Side-by-side modules inside columns should not each add section padding. */
+.dnd-column .nw-section { padding-top: 0; padding-bottom: 0; }

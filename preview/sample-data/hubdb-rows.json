@@ -1,0 +1,26 @@
+[
+  {
+    "hs_id": 1,
+    "title": "Hero",
+    "description": "<p>Page opener with heading, body and two buttons.</p>",
+    "image": { "url": "assets/card-1.svg", "altText": "" },
+    "link": "#hero",
+    "tag": { "id": 1, "name": "Opener", "type": "option" }
+  },
+  {
+    "hs_id": 2,
+    "title": "Accordion and tabs",
+    "description": "<p>Keyboard-accessible disclosure patterns.</p>",
+    "image": { "url": "assets/card-2.svg", "altText": "" },
+    "link": "#accordion",
+    "tag": { "id": 2, "name": "Content", "type": "option" }
+  },
+  {
+    "hs_id": 3,
+    "title": "CTA band",
+    "description": "<p>Full-width closing call to action.</p>",
+    "image": { "url": "assets/card-3.svg", "altText": "" },
+    "link": "#cta",
+    "tag": { "id": 3, "name": "Conversion", "type": "option" }
+  }
+]

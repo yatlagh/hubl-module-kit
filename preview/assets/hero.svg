@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Abstract illustration of page blocks">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1B4D3E"/>
+      <stop offset="1" stop-color="#2E7A62"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g fill="#FBFAF7" opacity="0.92">
+    <rect x="96" y="104" width="608" height="56" rx="10"/>
+    <rect x="96" y="184" width="292" height="200" rx="10"/>
+    <rect x="412" y="184" width="292" height="200" rx="10"/>
+    <rect x="96" y="408" width="608" height="88" rx="10"/>
+  </g>
+  <g fill="#E8A33D">
+    <rect x="120" y="432" width="160" height="40" rx="8"/>
+    <circle cx="672" cy="132" r="14"/>
+  </g>
+  <g fill="#1B4D3E" opacity="0.18">
+    <rect x="120" y="208" width="180" height="14" rx="7"/>
+    <rect x="120" y="236" width="240" height="14" rx="7"/>
+    <rect x="436" y="208" width="180" height="14" rx="7"/>
+    <rect x="436" y="236" width="240" height="14" rx="7"/>
+  </g>
+</svg>

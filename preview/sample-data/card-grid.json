@@ -1,0 +1,26 @@
+{
+  "source": "repeater",
+  "cards": [
+    {
+      "tag": "Opener",
+      "title": "Hero",
+      "description": "<p>Eyebrow, heading, body, two buttons and an optional image. Split or centered layout.</p>",
+      "image": { "src": "assets/card-1.svg", "alt": "" },
+      "link": { "url": { "href": "#hero" } }
+    },
+    {
+      "tag": "Content",
+      "title": "Accordion and tabs",
+      "description": "<p>Disclosure patterns that work with a keyboard and read fine without JavaScript.</p>",
+      "image": { "src": "assets/card-2.svg", "alt": "" },
+      "link": { "url": { "href": "#accordion" } }
+    },
+    {
+      "tag": "Conversion",
+      "title": "CTA band",
+      "description": "<p>A full-width strip to close the page with one clear action.</p>",
+      "image": { "src": "assets/card-3.svg", "alt": "" },
+      "link": { "url": { "href": "#cta" } }
+    }
+  ]
+}
