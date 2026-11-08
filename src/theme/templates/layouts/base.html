@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_meta.html_title }}</title>
+  <meta name="description" content="{{ page_meta.meta_description }}">
+  {{ require_css(get_asset_url("../../css/main.css")) }}
+  {{ require_js(get_asset_url("../../js/main.js"), "footer") }}
+  {{ standard_header_includes }}
+</head>
+<body class="{{ builtin_body_classes }}">
+  <a class="nw-skip-link" href="#main-content">Skip to content</a>
+  {% block body %}{% endblock body %}
+  {{ standard_footer_includes }}
+</body>
+</html>

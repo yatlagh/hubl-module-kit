@@ -1,0 +1,21 @@
+{
+  "name": "hubl-module-kit",
+  "version": "1.0.0",
+  "description": "Northwind: a HubSpot CMS theme with drag-and-drop HubL modules on one brand stylesheet, plus a local preview and automated checks that need no HubSpot account.",
+  "private": true,
+  "license": "MIT",
+  "author": "Yassine Atlagh <yassine@yunik.io>",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "preview": "node preview/build.js --serve",
+    "preview:build": "node preview/build.js",
+    "test": "node scripts/check-modules.js",
+    "screenshot": "node scripts/screenshot.js",
+    "upload": "hs upload src/theme northwind-theme"
+  },
+  "dependencies": {
+    "nunjucks": "3.2.4"
+  }
+}

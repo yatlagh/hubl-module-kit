@@ -1,0 +1,51 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Landing page
+  screenshotPath: ../images/template-landing-page.png
+-->
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<main id="main-content" class="nw-page">
+  {% dnd_area "dnd_area" class="nw-page__body", label="Main content" %}
+
+    {% dnd_section padding={ "top": 0, "bottom": 0 } %}
+      {% dnd_module path="../modules/hero.module",
+        eyebrow="Marketing teams",
+        heading="Pages that stay on brand, no developer required",
+        body="Drag in a module, fill in the fields, publish. Every block shares one stylesheet, so nothing drifts.",
+        primary_cta={ "label": "See the modules", "href": "#modules" },
+        secondary_cta={ "label": "Read the guide", "href": "#guide" }
+      %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+    {% dnd_section %}
+      {% dnd_module path="../modules/card-grid.module" %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+    {% dnd_section background_color={ "r": 255, "g": 255, "b": 255, "a": 1 } %}
+      {% dnd_column width=6 offset=0 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/tabs.module" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+      {% dnd_column width=6 offset=6 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/accordion.module" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section padding={ "top": 0, "bottom": 0 } %}
+      {% dnd_module path="../modules/cta-band.module" %}
+      {% end_dnd_module %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+</main>
+{% endblock body %}

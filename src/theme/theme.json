@@ -1,0 +1,9 @@
+{
+  "label": "Northwind",
+  "preview_path": "./templates/landing-page.html",
+  "screenshot_path": "./images/theme-preview.png",
+  "enable_domain_stylesheets": false,
+  "responsive_breakpoints": [
+    { "name": "mobile", "mediaQuery": "@media (max-width: 767px)", "previewWidth": { "value": 477, "units": "px" } }
+  ]
+}

@@ -1,0 +1,206 @@
+/*
+  Northwind theme stylesheet.
+
+  This file is processed as HubL by HubSpot before it is served, so theme
+  field values (edited by marketers under Design > Theme settings) land as
+  CSS custom properties on :root. Every module stylesheet consumes those
+  variables and never hardcodes a brand value; `npm test` enforces that.
+*/
+
+:root {
+  /* Colors */
+  --nw-color-primary: {{ theme.colors.primary.color }};
+  --nw-color-accent: {{ theme.colors.accent.color }};
+  --nw-color-ink: {{ theme.colors.ink.color }};
+  --nw-color-muted: {{ theme.colors.muted.color }};
+  --nw-color-surface: {{ theme.colors.surface.color }};
+  --nw-color-panel: {{ theme.colors.panel.color }};
+  --nw-color-line: {{ theme.colors.line.color }};
+  --nw-color-on-primary: #ffffff;
+
+  /* Typography */
+  --nw-font-heading: "{{ theme.typography.heading.font }}", {{ theme.typography.heading.fallback }};
+  --nw-font-body: "{{ theme.typography.body.font }}", {{ theme.typography.body.fallback }};
+  --nw-font-heading-weight: {{ theme.typography.heading.styles.font_weight }};
+  --nw-size-display: clamp(2.25rem, 1.4rem + 3.2vw, {{ theme.typography.heading.size }}{{ theme.typography.heading.size_unit }});
+  --nw-size-body: {{ theme.typography.body.size }}{{ theme.typography.body.size_unit }};
+
+  /* Spacing and shape */
+  --nw-section-pad-top: {{ theme.spacing.section.padding.top.value }}{{ theme.spacing.section.padding.top.units }};
+  --nw-section-pad-bottom: {{ theme.spacing.section.padding.bottom.value }}{{ theme.spacing.section.padding.bottom.units }};
+  --nw-max-width: {{ theme.spacing.max_width }}px;
+  --nw-radius: {{ theme.spacing.radius }}px;
+  --nw-gutter: clamp(1rem, 4vw, 2.5rem);
+
+  /* Fixed scale (not editable; keeps the system coherent) */
+  --nw-space-1: 0.25rem;
+  --nw-space-2: 0.5rem;
+  --nw-space-3: 0.75rem;
+  --nw-space-4: 1rem;
+  --nw-space-5: 1.5rem;
+  --nw-space-6: 2rem;
+  --nw-space-7: 3rem;
+  --nw-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.18);
+  --nw-focus-ring: 0 0 0 3px var(--nw-color-surface), 0 0 0 6px var(--nw-color-accent);
+  --nw-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --nw-duration: 220ms;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--nw-color-surface);
+  color: var(--nw-color-ink);
+  font-family: var(--nw-font-body);
+  font-size: var(--nw-size-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 0.5em;
+  font-family: var(--nw-font-heading);
+  font-weight: var(--nw-font-heading-weight);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--nw-color-ink);
+}
+
+h1 { font-size: var(--nw-size-display); }
+h2 { font-size: clamp(1.75rem, 1.2rem + 1.8vw, 2.5rem); }
+h3 { font-size: 1.25rem; letter-spacing: 0; }
+
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--nw-color-primary);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--nw-focus-ring);
+  border-radius: 4px;
+}
+
+.nw-skip-link {
+  position: absolute;
+  left: var(--nw-space-4);
+  top: -100%;
+  padding: var(--nw-space-2) var(--nw-space-4);
+  background: var(--nw-color-ink);
+  color: var(--nw-color-surface);
+  border-radius: var(--nw-radius);
+  z-index: 100;
+}
+.nw-skip-link:focus { top: var(--nw-space-4); }
+
+/* ---------- Layout primitives shared by modules ---------- */
+
+.nw-section {
+  padding-top: var(--nw-section-pad-top);
+  padding-bottom: var(--nw-section-pad-bottom);
+}
+
+.nw-container {
+  width: min(100% - 2 * var(--nw-gutter), var(--nw-max-width));
+  margin-inline: auto;
+}
+
+.nw-eyebrow {
+  display: inline-block;
+  margin-bottom: var(--nw-space-3);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nw-color-primary);
+}
+
+.nw-lede {
+  max-width: 60ch;
+  font-size: 1.125rem;
+  color: var(--nw-color-muted);
+}
+
+.nw-section__header {
+  max-width: 64ch;
+  margin-bottom: var(--nw-space-7);
+}
+.nw-section__header--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* ---------- Buttons ---------- */
+
+.nw-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nw-space-2);
+  padding: 0.8em 1.4em;
+  border: 1px solid transparent;
+  border-radius: calc(var(--nw-radius) * 0.8);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform var(--nw-duration) var(--nw-ease),
+              background-color var(--nw-duration) var(--nw-ease),
+              border-color var(--nw-duration) var(--nw-ease);
+}
+.nw-button:hover { transform: translateY(-1px); }
+.nw-button:active { transform: translateY(0); }
+
+.nw-button--primary {
+  background: var(--nw-color-primary);
+  color: var(--nw-color-on-primary);
+}
+.nw-button--primary:hover { filter: brightness(1.08); }
+
+.nw-button--accent {
+  background: var(--nw-color-accent);
+  color: var(--nw-color-ink);
+}
+
+.nw-button--ghost {
+  background: transparent;
+  color: var(--nw-color-ink);
+  border-color: var(--nw-color-line);
+}
+.nw-button--ghost:hover { border-color: var(--nw-color-ink); }
+
+.nw-button--inverse {
+  background: var(--nw-color-surface);
+  color: var(--nw-color-primary);
+}
+
+/* ---------- Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

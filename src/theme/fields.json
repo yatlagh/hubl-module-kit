@@ -1,0 +1,125 @@
+[
+  {
+    "name": "colors",
+    "label": "Colors",
+    "type": "group",
+    "children": [
+      {
+        "name": "primary",
+        "label": "Primary",
+        "type": "color",
+        "default": { "color": "#1B4D3E", "opacity": 100 }
+      },
+      {
+        "name": "accent",
+        "label": "Accent",
+        "type": "color",
+        "default": { "color": "#E8A33D", "opacity": 100 }
+      },
+      {
+        "name": "ink",
+        "label": "Text",
+        "type": "color",
+        "default": { "color": "#1C1C1A", "opacity": 100 }
+      },
+      {
+        "name": "muted",
+        "label": "Muted text",
+        "type": "color",
+        "default": { "color": "#5E6460", "opacity": 100 }
+      },
+      {
+        "name": "surface",
+        "label": "Page background",
+        "type": "color",
+        "default": { "color": "#FBFAF7", "opacity": 100 }
+      },
+      {
+        "name": "panel",
+        "label": "Panel background",
+        "type": "color",
+        "default": { "color": "#FFFFFF", "opacity": 100 }
+      },
+      {
+        "name": "line",
+        "label": "Borders",
+        "type": "color",
+        "default": { "color": "#DDDAD2", "opacity": 100 }
+      }
+    ]
+  },
+  {
+    "name": "typography",
+    "label": "Typography",
+    "type": "group",
+    "children": [
+      {
+        "name": "heading",
+        "label": "Heading font",
+        "type": "font",
+        "load_external_fonts": true,
+        "default": {
+          "font": "Fraunces",
+          "font_set": "GOOGLE",
+          "variant": "600",
+          "size": 48,
+          "size_unit": "px",
+          "color": "#1C1C1A"
+        }
+      },
+      {
+        "name": "body",
+        "label": "Body font",
+        "type": "font",
+        "load_external_fonts": true,
+        "default": {
+          "font": "Inter",
+          "font_set": "GOOGLE",
+          "variant": "400",
+          "size": 17,
+          "size_unit": "px",
+          "color": "#1C1C1A"
+        }
+      }
+    ]
+  },
+  {
+    "name": "spacing",
+    "label": "Spacing",
+    "type": "group",
+    "children": [
+      {
+        "name": "section",
+        "label": "Section padding",
+        "type": "spacing",
+        "limits": { "padding": { "min": 24, "max": 160, "units": ["px"] } },
+        "default": {
+          "padding": {
+            "top": { "value": 88, "units": "px" },
+            "bottom": { "value": 88, "units": "px" }
+          }
+        }
+      },
+      {
+        "name": "max_width",
+        "label": "Content max width",
+        "type": "number",
+        "min": 960,
+        "max": 1440,
+        "step": 10,
+        "suffix": "px",
+        "default": 1160
+      },
+      {
+        "name": "radius",
+        "label": "Corner radius",
+        "type": "number",
+        "min": 0,
+        "max": 24,
+        "step": 1,
+        "suffix": "px",
+        "default": 10
+      }
+    ]
+  }
+]
