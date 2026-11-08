@@ -14,9 +14,11 @@
       {% dnd_module path="../modules/hero.module",
         eyebrow="Marketing teams",
         heading="Pages that stay on brand, no developer required",
-        body="Drag in a module, fill in the fields, publish. Every block shares one stylesheet, so nothing drifts.",
-        primary_cta={ "label": "See the modules", "href": "#modules" },
-        secondary_cta={ "label": "Read the guide", "href": "#guide" }
+        body="<p>Drag in a module, fill in the fields, publish. Every block shares one stylesheet, so nothing drifts.</p>",
+        primary_cta={ "label": "See the modules", "link": { "url": { "href": "#modules", "type": "EXTERNAL" } } },
+        secondary_cta={ "label": "Read the guide", "link": { "url": { "href": "#guide", "type": "EXTERNAL" } } },
+        layout="split",
+        tone="surface"
       %}
       {% end_dnd_module %}
     {% end_dnd_section %}

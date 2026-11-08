@@ -1,0 +1,71 @@
+/* Hero module. All colour and spacing comes from theme variables in css/main.css. */
+
+.nw-hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(var(--nw-section-pad-top) * 1.25);
+  padding-bottom: calc(var(--nw-section-pad-bottom) * 1.25);
+}
+
+.nw-hero--primary {
+  background: var(--nw-color-primary);
+  color: var(--nw-color-on-primary);
+}
+.nw-hero--primary .nw-hero__heading,
+.nw-hero--primary .nw-hero__eyebrow { color: var(--nw-color-on-primary); }
+.nw-hero--primary .nw-hero__body { color: var(--nw-color-on-primary); opacity: 0.85; }
+.nw-hero--primary .nw-button--ghost {
+  color: var(--nw-color-on-primary);
+  border-color: color-mix(in srgb, var(--nw-color-on-primary) 40%, transparent);
+}
+.nw-hero--primary .nw-button--ghost:hover { border-color: var(--nw-color-on-primary); }
+
+.nw-hero__inner {
+  display: grid;
+  gap: var(--nw-space-7);
+  align-items: center;
+}
+
+.nw-hero--split .nw-hero__inner {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+}
+
+.nw-hero--stacked .nw-hero__inner {
+  text-align: center;
+  justify-items: center;
+}
+.nw-hero--stacked .nw-hero__copy { max-width: 46rem; }
+.nw-hero--stacked .nw-lede { margin-inline: auto; }
+.nw-hero--stacked .nw-hero__actions { justify-content: center; }
+
+.nw-hero__heading {
+  margin-bottom: var(--nw-space-5);
+  text-wrap: balance;
+}
+
+.nw-hero__body { margin-bottom: var(--nw-space-6); }
+
+.nw-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nw-space-3);
+}
+
+.nw-hero__media {
+  margin: 0;
+  border-radius: calc(var(--nw-radius) * 1.6);
+  overflow: hidden;
+  box-shadow: var(--nw-shadow);
+  background: var(--nw-color-panel);
+  aspect-ratio: 4 / 3;
+}
+.nw-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .nw-hero--split .nw-hero__inner { grid-template-columns: 1fr; }
+  .nw-hero__media { order: -1; }
+}

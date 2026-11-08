@@ -1,0 +1,86 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "inline_help_text": "Short label above the heading. Leave empty to hide.",
+    "default": "Marketing teams"
+  },
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "required": true,
+    "default": "Pages that stay on brand, no developer required"
+  },
+  {
+    "name": "heading_tag",
+    "label": "Heading level",
+    "type": "choice",
+    "inline_help_text": "Use H1 once per page, for the main heading.",
+    "choices": [["h1", "H1"], ["h2", "H2"]],
+    "default": "h1"
+  },
+  {
+    "name": "body",
+    "label": "Body",
+    "type": "richtext",
+    "enabled_features": ["bold", "italic", "link"],
+    "default": "<p>Drag in a module, fill in the fields, publish. Every block shares one stylesheet, so nothing drifts.</p>"
+  },
+  {
+    "name": "primary_cta",
+    "label": "Primary button",
+    "type": "group",
+    "children": [
+      { "name": "label", "label": "Label", "type": "text", "default": "See the modules" },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": ["EXTERNAL", "CONTENT", "EMAIL_ADDRESS", "PAYMENT"],
+        "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#modules" }, "open_in_new_tab": false, "no_follow": false }
+      }
+    ]
+  },
+  {
+    "name": "secondary_cta",
+    "label": "Secondary button",
+    "type": "group",
+    "inline_help_text": "Leave the label empty to show only one button.",
+    "children": [
+      { "name": "label", "label": "Label", "type": "text", "default": "Read the guide" },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": ["EXTERNAL", "CONTENT", "EMAIL_ADDRESS"],
+        "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#guide" }, "open_in_new_tab": false, "no_follow": false }
+      }
+    ]
+  },
+  {
+    "name": "image",
+    "label": "Image",
+    "type": "image",
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "default": { "src": "", "alt": "", "loading": "lazy" }
+  },
+  {
+    "name": "layout",
+    "label": "Layout",
+    "type": "choice",
+    "display": "radio",
+    "choices": [["split", "Text left, image right"], ["stacked", "Centered, image below"]],
+    "default": "split"
+  },
+  {
+    "name": "tone",
+    "label": "Background",
+    "type": "choice",
+    "choices": [["surface", "Page background"], ["primary", "Brand primary"]],
+    "default": "surface"
+  }
+]

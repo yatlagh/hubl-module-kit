@@ -1,0 +1,53 @@
+[
+  {
+    "name": "heading",
+    "label": "Heading",
+    "type": "text",
+    "required": true,
+    "default": "Ready to hand the page builder to your team?"
+  },
+  {
+    "name": "heading_tag",
+    "label": "Heading level",
+    "type": "choice",
+    "choices": [["h2", "H2"], ["h3", "H3"]],
+    "default": "h2"
+  },
+  {
+    "name": "body",
+    "label": "Supporting text",
+    "type": "richtext",
+    "enabled_features": ["bold", "italic", "link"],
+    "default": "<p>Install the theme, set the brand once, and let marketers publish without a ticket.</p>"
+  },
+  {
+    "name": "button",
+    "label": "Button",
+    "type": "group",
+    "children": [
+      { "name": "label", "label": "Label", "type": "text", "required": true, "default": "Get the theme" },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": ["EXTERNAL", "CONTENT", "EMAIL_ADDRESS", "PAYMENT"],
+        "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#" }, "open_in_new_tab": false, "no_follow": false }
+      }
+    ]
+  },
+  {
+    "name": "note",
+    "label": "Small print",
+    "type": "text",
+    "inline_help_text": "Optional line under the button, for example a licence or contact note.",
+    "default": "MIT licensed. Works on HubSpot CMS Hub Starter and above."
+  },
+  {
+    "name": "tone",
+    "label": "Background",
+    "type": "choice",
+    "display": "radio",
+    "choices": [["primary", "Brand primary"], ["accent", "Accent"], ["ink", "Dark"]],
+    "default": "primary"
+  }
+]

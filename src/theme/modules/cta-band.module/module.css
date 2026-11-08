@@ -1,0 +1,66 @@
+/* CTA band module. Tone variants swap which theme colour fills the band. */
+
+.nw-cta-band {
+  --nw-band-bg: var(--nw-color-primary);
+  --nw-band-fg: var(--nw-color-on-primary);
+  padding-top: calc(var(--nw-section-pad-top) * 0.9);
+  padding-bottom: calc(var(--nw-section-pad-bottom) * 0.9);
+  background: var(--nw-band-bg);
+  color: var(--nw-band-fg);
+}
+.nw-cta-band--accent {
+  --nw-band-bg: var(--nw-color-accent);
+  --nw-band-fg: var(--nw-color-ink);
+}
+.nw-cta-band--ink {
+  --nw-band-bg: var(--nw-color-ink);
+  --nw-band-fg: var(--nw-color-surface);
+}
+
+.nw-cta-band__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: var(--nw-space-6);
+  align-items: center;
+}
+
+.nw-cta-band__heading {
+  margin-bottom: var(--nw-space-3);
+  color: var(--nw-band-fg);
+  text-wrap: balance;
+}
+
+.nw-cta-band__body {
+  max-width: 56ch;
+  font-size: 1.0625rem;
+  opacity: 0.85;
+}
+
+.nw-cta-band__action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--nw-space-3);
+}
+
+.nw-cta-band__button {
+  background: var(--nw-band-fg);
+  color: var(--nw-band-bg);
+  font-size: 1.0625rem;
+}
+.nw-cta-band__button:focus-visible {
+  box-shadow: 0 0 0 3px var(--nw-band-bg), 0 0 0 6px var(--nw-band-fg);
+}
+
+.nw-cta-band__note {
+  margin: 0;
+  font-size: 0.875rem;
+  opacity: 0.75;
+}
+
+@media (min-width: 768px) {
+  .nw-cta-band__action { align-items: flex-end; text-align: right; }
+}
+@media (max-width: 767px) {
+  .nw-cta-band__inner { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "name": "heading",
+    "label": "Section heading",
+    "type": "text",
+    "default": "One system, three audiences"
+  },
+  {
+    "name": "heading_tag",
+    "label": "Section heading level",
+    "type": "choice",
+    "choices": [["h2", "H2"], ["h3", "H3"]],
+    "default": "h2"
+  },
+  {
+    "name": "activation",
+    "label": "Keyboard activation",
+    "type": "choice",
+    "inline_help_text": "Automatic switches tabs as the arrow keys move focus. Manual waits for Enter or Space.",
+    "choices": [["automatic", "Automatic"], ["manual", "Manual"]],
+    "default": "automatic"
+  },
+  {
+    "name": "tabs",
+    "label": "Tabs",
+    "type": "group",
+    "occurrence": { "min": 2, "max": 6, "default": 3, "sorting_label_field": "tabs.label" },
+    "children": [
+      { "name": "label", "label": "Tab label", "type": "text", "required": true, "default": "Tab" },
+      { "name": "title", "label": "Panel title", "type": "text", "default": "" },
+      {
+        "name": "content",
+        "label": "Panel content",
+        "type": "richtext",
+        "enabled_features": ["bold", "italic", "link", "lists"],
+        "default": "<p>Content.</p>"
+      }
+    ],
+    "default": [
+      {
+        "label": "Marketers",
+        "title": "Build the page yourself",
+        "content": "<p>Open the page editor, drag a module into a section, fill in the fields. Headings, spacing and colours are already decided, so the result looks finished the first time.</p>"
+      },
+      {
+        "label": "Designers",
+        "title": "Change the brand in one place",
+        "content": "<p>Theme settings hold the palette, fonts and spacing. Adjust them once and every page, old and new, follows.</p>"
+      },
+      {
+        "label": "Developers",
+        "title": "Ship with confidence",
+        "content": "<p>Modules are plain HubL, CSS and vanilla JavaScript. Run <code>npm test</code> before <code>hs upload</code> to catch undeclared fields and off-brand colours.</p>"
+      }
+    ]
+  }
+]

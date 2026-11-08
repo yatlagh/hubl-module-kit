@@ -1,0 +1,86 @@
+/* Card grid module. */
+
+.nw-card-grid__list {
+  display: grid;
+  gap: var(--nw-space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: repeat(var(--nw-card-cols, 3), minmax(0, 1fr));
+}
+.nw-card-grid__list--cols-2 { --nw-card-cols: 2; }
+.nw-card-grid__list--cols-3 { --nw-card-cols: 3; }
+.nw-card-grid__list--cols-4 { --nw-card-cols: 4; }
+
+.nw-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--nw-color-panel);
+  border: 1px solid var(--nw-color-line);
+  border-radius: calc(var(--nw-radius) + 4px);
+  overflow: hidden;
+  transition: transform var(--nw-duration) var(--nw-ease),
+              box-shadow var(--nw-duration) var(--nw-ease),
+              border-color var(--nw-duration) var(--nw-ease);
+}
+.nw-card:has(.nw-card__link):hover {
+  transform: translateY(-3px);
+  box-shadow: var(--nw-shadow);
+  border-color: color-mix(in srgb, var(--nw-color-primary) 35%, var(--nw-color-line));
+}
+.nw-card:has(.nw-card__link:focus-visible) {
+  box-shadow: var(--nw-focus-ring);
+}
+
+.nw-card__media {
+  aspect-ratio: 16 / 9;
+  background: color-mix(in srgb, var(--nw-color-primary) 8%, var(--nw-color-panel));
+}
+.nw-card__media img { width: 100%; height: 100%; object-fit: cover; }
+
+.nw-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nw-space-2);
+  padding: var(--nw-space-5);
+}
+
+.nw-card__tag {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nw-color-accent);
+}
+
+.nw-card__title { margin: 0; }
+
+/* The whole card is clickable, but only the title is a link (one tab stop). */
+.nw-card__link {
+  color: inherit;
+  text-decoration: none;
+}
+.nw-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.nw-card__link:hover { color: var(--nw-color-primary); }
+.nw-card__link:focus-visible { box-shadow: none; outline: none; }
+
+.nw-card__text {
+  color: var(--nw-color-muted);
+  font-size: 0.9375rem;
+}
+/* Links inside the description must sit above the stretched title link. */
+.nw-card__text a { position: relative; z-index: 1; }
+
+@media (max-width: 1023px) {
+  .nw-card-grid__list--cols-4 { --nw-card-cols: 2; }
+  .nw-card-grid__list--cols-3 { --nw-card-cols: 2; }
+}
+@media (max-width: 639px) {
+  .nw-card-grid__list { --nw-card-cols: 1 !important; }
+}

@@ -1,0 +1,15 @@
+{
+  "label": "Northwind: Card grid",
+  "help_text": "Responsive grid of cards fed by a repeater group or a HubDB table.",
+  "icon": "@hubspot/sprocket",
+  "global": false,
+  "host_template_types": ["PAGE", "LANDING_PAGE"],
+  "content_types": ["SITE_PAGE", "LANDING_PAGE"],
+  "is_available_for_new_content": true,
+  "smart_type": "NOT_SMART",
+  "css_assets": [],
+  "js_assets": [],
+  "external_js": [],
+  "other_assets": [],
+  "tags": ["Northwind"]
+}

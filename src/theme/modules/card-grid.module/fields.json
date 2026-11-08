@@ -1,0 +1,107 @@
+[
+  {
+    "name": "eyebrow",
+    "label": "Eyebrow",
+    "type": "text",
+    "default": "Modules"
+  },
+  {
+    "name": "heading",
+    "label": "Section heading",
+    "type": "text",
+    "default": "Everything a landing page needs"
+  },
+  {
+    "name": "heading_tag",
+    "label": "Section heading level",
+    "type": "choice",
+    "choices": [["h2", "H2"], ["h3", "H3"]],
+    "default": "h2"
+  },
+  {
+    "name": "intro",
+    "label": "Intro",
+    "type": "richtext",
+    "enabled_features": ["bold", "italic", "link"],
+    "default": "<p>Five blocks, one stylesheet. Each one is a HubL module marketers drop into any section.</p>"
+  },
+  {
+    "name": "columns",
+    "label": "Columns on desktop",
+    "type": "choice",
+    "display": "radio",
+    "choices": [["2", "2"], ["3", "3"], ["4", "4"]],
+    "default": "3"
+  },
+  {
+    "name": "source",
+    "label": "Card source",
+    "type": "choice",
+    "display": "radio",
+    "inline_help_text": "Repeater cards are edited here in the module. HubDB cards come from a table so non-editors can maintain the list.",
+    "choices": [["repeater", "Cards in this module"], ["hubdb", "HubDB table"]],
+    "default": "repeater"
+  },
+  {
+    "name": "hubdb_table",
+    "label": "HubDB table",
+    "type": "hubdbtable",
+    "inline_help_text": "Columns expected: title (text), description (rich text), image (image), link (url), tag (select).",
+    "visibility": { "controlling_field": "source", "controlling_value_regex": "hubdb" }
+  },
+  {
+    "name": "cards",
+    "label": "Cards",
+    "type": "group",
+    "occurrence": { "min": 1, "max": 12, "default": 3, "sorting_label_field": "cards.title" },
+    "visibility": { "controlling_field": "source", "controlling_value_regex": "repeater" },
+    "children": [
+      { "name": "tag", "label": "Tag", "type": "text", "default": "" },
+      { "name": "title", "label": "Title", "type": "text", "required": true, "default": "Card title" },
+      {
+        "name": "description",
+        "label": "Description",
+        "type": "richtext",
+        "enabled_features": ["bold", "italic", "link"],
+        "default": "<p>Description.</p>"
+      },
+      {
+        "name": "image",
+        "label": "Image",
+        "type": "image",
+        "responsive": true,
+        "default": { "src": "", "alt": "", "loading": "lazy" }
+      },
+      {
+        "name": "link",
+        "label": "Link",
+        "type": "link",
+        "supported_types": ["EXTERNAL", "CONTENT"],
+        "default": { "url": { "content_id": null, "type": "EXTERNAL", "href": "" }, "open_in_new_tab": false, "no_follow": false }
+      }
+    ],
+    "default": [
+      {
+        "tag": "Opener",
+        "title": "Hero",
+        "description": "<p>Eyebrow, heading, body, two buttons and an optional image. Split or centered layout.</p>",
+        "image": { "src": "", "alt": "", "loading": "lazy" },
+        "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#hero" }, "open_in_new_tab": false, "no_follow": false }
+      },
+      {
+        "tag": "Content",
+        "title": "Accordion and tabs",
+        "description": "<p>Disclosure patterns that work with a keyboard and read fine without JavaScript.</p>",
+        "image": { "src": "", "alt": "", "loading": "lazy" },
+        "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#accordion" }, "open_in_new_tab": false, "no_follow": false }
+      },
+      {
+        "tag": "Conversion",
+        "title": "CTA band",
+        "description": "<p>A full-width strip to close the page with one clear action.</p>",
+        "image": { "src": "", "alt": "", "loading": "lazy" },
+        "link": { "url": { "content_id": null, "type": "EXTERNAL", "href": "#cta" }, "open_in_new_tab": false, "no_follow": false }
+      }
+    ]
+  }
+]

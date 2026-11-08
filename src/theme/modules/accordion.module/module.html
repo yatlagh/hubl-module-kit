@@ -1,0 +1,46 @@
+{# Accordion: disclosure list following the WAI-ARIA accordion pattern.
+   Without JavaScript every panel is visible; js/main.js collapses them and adds keyboard support. #}
+
+{% set tag = module.heading_tag or "h2" %}
+{% set item_tag = "h3" if tag == "h2" else "h4" %}
+
+<section class="nw-accordion nw-section" {% if module.heading %}aria-labelledby="{{ name }}-heading"{% endif %}>
+  <div class="nw-container">
+    {% if module.heading or module.intro %}
+      <header class="nw-section__header">
+        {% if module.heading %}
+          <{{ tag }} id="{{ name }}-heading">{{ module.heading }}</{{ tag }}>
+        {% endif %}
+        {% if module.intro %}
+          <div class="nw-lede">{{ module.intro }}</div>
+        {% endif %}
+      </header>
+    {% endif %}
+
+    <div class="nw-accordion__list"
+         data-nw-accordion
+         data-allow-multiple="{{ 'true' if module.allow_multiple else 'false' }}">
+      {% for item in module.items %}
+        {% set open = module.first_open and loop.first %}
+        <div class="nw-accordion__item">
+          <{{ item_tag }} class="nw-accordion__title">
+            <button type="button"
+                    class="nw-accordion__trigger"
+                    id="{{ name }}-trigger-{{ loop.index }}"
+                    aria-expanded="{{ 'true' if open else 'false' }}"
+                    aria-controls="{{ name }}-panel-{{ loop.index }}">
+              <span class="nw-accordion__label">{{ item.title }}</span>
+              <span class="nw-accordion__icon" aria-hidden="true"></span>
+            </button>
+          </{{ item_tag }}>
+          <div class="nw-accordion__panel"
+               id="{{ name }}-panel-{{ loop.index }}"
+               role="region"
+               aria-labelledby="{{ name }}-trigger-{{ loop.index }}">
+            <div class="nw-accordion__content">{{ item.content }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

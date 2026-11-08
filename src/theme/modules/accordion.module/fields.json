@@ -1,0 +1,66 @@
+[
+  {
+    "name": "heading",
+    "label": "Section heading",
+    "type": "text",
+    "default": "Questions marketers ask"
+  },
+  {
+    "name": "heading_tag",
+    "label": "Section heading level",
+    "type": "choice",
+    "choices": [["h2", "H2"], ["h3", "H3"]],
+    "default": "h2"
+  },
+  {
+    "name": "intro",
+    "label": "Intro",
+    "type": "richtext",
+    "enabled_features": ["bold", "italic", "link"],
+    "default": "<p>Short answers to the things people ask before they adopt the theme.</p>"
+  },
+  {
+    "name": "allow_multiple",
+    "label": "Allow several panels open at once",
+    "type": "boolean",
+    "display": "toggle",
+    "default": false
+  },
+  {
+    "name": "first_open",
+    "label": "Open the first panel by default",
+    "type": "boolean",
+    "display": "toggle",
+    "default": true
+  },
+  {
+    "name": "items",
+    "label": "Items",
+    "type": "group",
+    "occurrence": { "min": 1, "max": 12, "default": 3, "sorting_label_field": "items.title" },
+    "children": [
+      { "name": "title", "label": "Question", "type": "text", "required": true, "default": "Question" },
+      {
+        "name": "content",
+        "label": "Answer",
+        "type": "richtext",
+        "enabled_features": ["bold", "italic", "link", "lists"],
+        "default": "<p>Answer.</p>"
+      }
+    ],
+    "default": [
+      {
+        "title": "Do I need a developer to build a page?",
+        "content": "<p>No. Every module in this theme is drag-and-drop in the HubSpot page editor. Fields are plain text, rich text, images and links.</p>"
+      },
+      {
+        "title": "How do we change the brand colours?",
+        "content": "<p>Under <strong>Design &gt; Theme settings</strong>. The values flow into one stylesheet; every module picks them up automatically.</p>"
+      },
+      {
+        "title": "What happens without JavaScript?",
+        "content": "<p>Everything stays readable. Accordion panels render expanded and tabs render as a stacked list of sections.</p>"
+      }
+    ]
+  }
+]

@@ -1,0 +1,42 @@
+{# Hero: page opener with eyebrow, heading, body, up to two CTAs and an optional image. #}
+
+{% macro cta(button, variant) %}
+  {% if button.label and button.link.url.href %}
+    <a class="nw-button nw-button--{{ variant }}"
+       href="{{ button.link.url.href }}"
+       {% if button.link.open_in_new_tab %}target="_blank" rel="noopener{% if button.link.no_follow %} nofollow{% endif %}"{% elif button.link.no_follow %}rel="nofollow"{% endif %}>
+      {{ button.label }}
+    </a>
+  {% endif %}
+{% endmacro %}
+
+{% set tag = module.heading_tag or "h1" %}
+
+<section class="nw-hero nw-section nw-hero--{{ module.layout }} nw-hero--{{ module.tone }}" aria-labelledby="{{ name }}-heading">
+  <div class="nw-container nw-hero__inner">
+    <div class="nw-hero__copy">
+      {% if module.eyebrow %}
+        <p class="nw-eyebrow nw-hero__eyebrow">{{ module.eyebrow }}</p>
+      {% endif %}
+      <{{ tag }} id="{{ name }}-heading" class="nw-hero__heading">{{ module.heading }}</{{ tag }}>
+      {% if module.body %}
+        <div class="nw-lede nw-hero__body">{{ module.body }}</div>
+      {% endif %}
+      {% if module.primary_cta.label or module.secondary_cta.label %}
+        <div class="nw-hero__actions">
+          {{ cta(module.primary_cta, "primary" if module.tone == "surface" else "inverse") }}
+          {{ cta(module.secondary_cta, "ghost") }}
+        </div>
+      {% endif %}
+    </div>
+    {% if module.image.src %}
+      <figure class="nw-hero__media">
+        <img src="{{ module.image.src }}"
+             alt="{{ module.image.alt }}"
+             {% if module.image.width %}width="{{ module.image.width }}"{% endif %}
+             {% if module.image.height %}height="{{ module.image.height }}"{% endif %}
+             loading="{{ module.image.loading or 'lazy' }}">
+      </figure>
+    {% endif %}
+  </div>
+</section>

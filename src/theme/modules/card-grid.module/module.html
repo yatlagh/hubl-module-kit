@@ -1,0 +1,50 @@
+{# Card grid: cards come from the repeater group or from a HubDB table.
+   Both sources render through the same macro so the markup never diverges. #}
+
+{% set tag = module.heading_tag or "h2" %}
+{% set card_tag = "h3" if tag == "h2" else "h4" %}
+
+{% macro card(card_tag, label, title, description, image_src, image_alt, href, new_tab) %}
+  <li class="nw-card">
+    {% if image_src %}
+      <div class="nw-card__media">
+        <img src="{{ image_src }}" alt="{{ image_alt }}" loading="lazy">
+      </div>
+    {% endif %}
+    <div class="nw-card__body">
+      {% if label %}<p class="nw-card__tag">{{ label }}</p>{% endif %}
+      <{{ card_tag }} class="nw-card__title">
+        {% if href %}
+          <a class="nw-card__link" href="{{ href }}" {% if new_tab %}target="_blank" rel="noopener"{% endif %}>{{ title }}</a>
+        {% else %}
+          {{ title }}
+        {% endif %}
+      </{{ card_tag }}>
+      {% if description %}<div class="nw-card__text">{{ description }}</div>{% endif %}
+    </div>
+  </li>
+{% endmacro %}
+
+<section class="nw-card-grid nw-section" {% if module.heading %}aria-labelledby="{{ name }}-heading"{% endif %}>
+  <div class="nw-container">
+    {% if module.heading or module.intro %}
+      <header class="nw-section__header nw-section__header--center">
+        {% if module.eyebrow %}<p class="nw-eyebrow">{{ module.eyebrow }}</p>{% endif %}
+        {% if module.heading %}<{{ tag }} id="{{ name }}-heading">{{ module.heading }}</{{ tag }}>{% endif %}
+        {% if module.intro %}<div class="nw-lede">{{ module.intro }}</div>{% endif %}
+      </header>
+    {% endif %}
+
+    <ul class="nw-card-grid__list nw-card-grid__list--cols-{{ module.columns }}" role="list">
+      {% if module.source == "hubdb" and module.hubdb_table %}
+        {% for row in hubdb_table_rows(module.hubdb_table, "orderBy=hs_created_at") %}
+          {{ card(card_tag, row.tag.name, row.title, row.description, row.image.url, row.image.altText, row.link, false) }}
+        {% endfor %}
+      {% else %}
+        {% for item in module.cards %}
+          {{ card(card_tag, item.tag, item.title, item.description, item.image.src, item.image.alt, item.link.url.href, item.link.open_in_new_tab) }}
+        {% endfor %}
+      {% endif %}
+    </ul>
+  </div>
+</section>

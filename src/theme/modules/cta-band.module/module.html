@@ -1,0 +1,26 @@
+{# CTA band: full-width closing strip with one clear action. #}
+
+{% set tag = module.heading_tag or "h2" %}
+
+<section class="nw-cta-band nw-cta-band--{{ module.tone }}" aria-labelledby="{{ name }}-heading">
+  <div class="nw-container nw-cta-band__inner">
+    <div class="nw-cta-band__copy">
+      <{{ tag }} id="{{ name }}-heading" class="nw-cta-band__heading">{{ module.heading }}</{{ tag }}>
+      {% if module.body %}
+        <div class="nw-cta-band__body">{{ module.body }}</div>
+      {% endif %}
+    </div>
+    <div class="nw-cta-band__action">
+      {% if module.button.label and module.button.link.url.href %}
+        <a class="nw-button nw-button--inverse nw-cta-band__button"
+           href="{{ module.button.link.url.href }}"
+           {% if module.button.link.open_in_new_tab %}target="_blank" rel="noopener{% if module.button.link.no_follow %} nofollow{% endif %}"{% elif module.button.link.no_follow %}rel="nofollow"{% endif %}>
+          {{ module.button.label }}
+        </a>
+      {% endif %}
+      {% if module.note %}
+        <p class="nw-cta-band__note">{{ module.note }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>

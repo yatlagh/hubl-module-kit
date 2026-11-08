@@ -1,0 +1,41 @@
+{# Tabs: WAI-ARIA tabs pattern. Without JavaScript all panels are shown stacked. #}
+
+{% set tag = module.heading_tag or "h2" %}
+{% set panel_tag = "h3" if tag == "h2" else "h4" %}
+
+<section class="nw-tabs nw-section" {% if module.heading %}aria-labelledby="{{ name }}-heading"{% endif %}>
+  <div class="nw-container">
+    {% if module.heading %}
+      <header class="nw-section__header">
+        <{{ tag }} id="{{ name }}-heading">{{ module.heading }}</{{ tag }}>
+      </header>
+    {% endif %}
+
+    <div class="nw-tabs__widget" data-nw-tabs data-activation="{{ module.activation }}">
+      <div class="nw-tabs__list" role="tablist" {% if module.heading %}aria-labelledby="{{ name }}-heading"{% endif %}>
+        {% for tab in module.tabs %}
+          <button type="button"
+                  class="nw-tabs__tab"
+                  role="tab"
+                  id="{{ name }}-tab-{{ loop.index }}"
+                  aria-selected="{{ 'true' if loop.first else 'false' }}"
+                  aria-controls="{{ name }}-panel-{{ loop.index }}">
+            {{ tab.label }}
+          </button>
+        {% endfor %}
+      </div>
+
+      {% for tab in module.tabs %}
+        <div class="nw-tabs__panel"
+             role="tabpanel"
+             id="{{ name }}-panel-{{ loop.index }}"
+             aria-labelledby="{{ name }}-tab-{{ loop.index }}">
+          {% if tab.title %}
+            <{{ panel_tag }} class="nw-tabs__title">{{ tab.title }}</{{ panel_tag }}>
+          {% endif %}
+          <div class="nw-tabs__content">{{ tab.content }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

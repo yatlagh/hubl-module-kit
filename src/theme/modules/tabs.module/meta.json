@@ -1,0 +1,15 @@
+{
+  "label": "Northwind: Tabs",
+  "help_text": "Tabbed content panels using the WAI-ARIA tabs pattern. Readable without JavaScript.",
+  "icon": "@hubspot/sprocket",
+  "global": false,
+  "host_template_types": ["PAGE", "LANDING_PAGE"],
+  "content_types": ["SITE_PAGE", "LANDING_PAGE"],
+  "is_available_for_new_content": true,
+  "smart_type": "NOT_SMART",
+  "css_assets": [],
+  "js_assets": [],
+  "external_js": [],
+  "other_assets": [],
+  "tags": ["Northwind"]
+}
